@@ -36,7 +36,6 @@ def main():
             days = '[day {}]'.format(streaks)
             task.content = re.sub(r'\[day\s(\d+)\]', days, task.content)
             task.date_string = 'ev day starting tod'
-            print type(task.due_date_utc)
             task.update()
 
 
