@@ -11,3 +11,6 @@ Here's how it works
 3. When you complete the task, the [day 0] will become [day 1]
 
 4. If you fail to complete the task and it becomes overdue, the script will schedule it to today and reset [day X] to [day 0].
+
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
