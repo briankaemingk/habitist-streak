@@ -1,7 +1,7 @@
 # habitist
 An automation to enable habit tracking in todoist. 
 
-It integrates Seinfield's "Don't Break the Chain" method into todoist. Once it's setup, you can forget about it and it works seamlessly.
+It integrates Seinfield's "Don't Break the Chain" method into [todoist](http://todoist.com/). Once it's setup, you can forget about it and it works seamlessly.
 
 Here's how it works
 1. You add habits you want to form as task on todoist with schedule `every day`
