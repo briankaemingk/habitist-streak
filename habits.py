@@ -16,6 +16,12 @@ def is_habit(text):
     return re.search(r'\[day\s(\d+)\]', text)
 
 
+def update_streak(task, streak):
+    days = '[day {}]'.format(streak)
+    task.content = re.sub(r'\[day\s(\d+)\]', days, task.content)
+    task.update()
+
+
 def main():
     API_TOKEN = get_token()
     if not API_TOKEN:
@@ -26,21 +32,15 @@ def main():
     for task in tasks:
         habit = is_habit(task.content)
         if habit:
-            streaks = int(habit.group(1)) + 1
-            days = '[day {}]'.format(streaks)
-            task.content = re.sub(r'\[day\s(\d+)\]', days, task.content)
-            task.update()
+            streak = int(habit.group(1)) + 1
+            update_streak(task, streak)
 
     tasks = user.search_tasks(todoist.Query.OVERDUE)
     for task in tasks:
         habit = is_habit(task.content)
         if habit:
-            streaks = 0
-            days = '[day {}]'.format(streaks)
-            task.content = re.sub(r'\[day\s(\d+)\]', days, task.content)
             task.date_string = 'ev day starting tod'
-            task.update()
-
+            update_streak(task, 0)
 
 if __name__ == '__main__':
     main()
