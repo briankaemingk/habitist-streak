@@ -6,7 +6,7 @@ It integrates Seinfield's "[Don't Break the Chain](https://lifehacker.com/281626
 ## Usage
 1. You add habits you want to form as task on todoist with schedule `every day`
 
-2. Add `[Days 0]` to the task
+2. Add `[day 0]` to the task
 
 3. When you complete the task, the [day 0] will become [day 1]
 
