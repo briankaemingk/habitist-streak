@@ -3,7 +3,7 @@ An automation to enable habit tracking in todoist.
 
 It integrates Seinfield's "[Don't Break the Chain](https://lifehacker.com/281626/jerry-seinfelds-productivity-secret)" method into [todoist](http://todoist.com/). Once it's setup, you can forget about it and it works seamlessly.
 
-Here's how it works
+## Usage
 1. You add habits you want to form as task on todoist with schedule `every day`
 
 2. Add `[Days 0]` to the task
@@ -12,7 +12,7 @@ Here's how it works
 
 4. If you fail to complete the task and it becomes overdue, the script will schedule it to today and reset [day X] to [day 0].
 
-# Installation
+## Installation
 1. Fork and clone the repo
     ```
     git clone https://github.com/yourgithubusername/habitist
