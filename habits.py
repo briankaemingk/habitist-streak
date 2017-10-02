@@ -1,7 +1,7 @@
 import os
 import re
-from pytodoist import todoist
 import logging
+from pytodoist import todoist
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
