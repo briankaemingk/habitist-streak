@@ -30,7 +30,6 @@ def main():
             days = '[day {}]'.format(streaks)
             task.content = re.sub(r'\[day\s(\d+)\]', days, task.content)
             task.update()
-        tasks = user.search_tasks(todoist.Query.OVERDUE)
 
     tasks = user.search_tasks(todoist.Query.OVERDUE)
     for task in tasks:
