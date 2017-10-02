@@ -12,6 +12,31 @@ Here's how it works
 
 4. If you fail to complete the task and it becomes overdue, the script will schedule it to today and reset [day X] to [day 0].
 
+# Installation
+1. Fork and clone the repo
+    ```
+    git clone https://github.com/yourgithubusername/habitist
+    ```
+2. Create a heroku app.
+    ```
+    heroku create appname
+    ```
+3. Set environment variable with your todost API key. You'll find API key under `Settings > Integrations` on [todoist.com](https://todoist.com).
+    ```
+     heroku config:set TODOIST_APIKEY='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    ``` 
+
+4. Push the app
+    ```
+    git push heroku master
+    ```
+ 
+5. On [IFTTT](http://ifttt.com/), [create](https://ifttt.com/create) a new applet. 
+    - On THIS, select datetime > 'Every Day At' > 12 AM
+    - On THAT, select Webhooks > `Make a web request`
+    - Set URL to your heroku app URL
+    - Set METHOD to GET
+    - Hit Create Action
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
