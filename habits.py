@@ -1,6 +1,10 @@
 import os
 import re
 from pytodoist import todoist
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
 def get_token():
@@ -15,7 +19,7 @@ def is_habit(text):
 def main():
     API_TOKEN = get_token()
     if not API_TOKEN:
-        print "Please set the API token in environment variable."
+        logging.warn('Please set the API token in environment variable.')
         exit()
     user = todoist.login_with_api_token(API_TOKEN)
     tasks = user.search_tasks(todoist.Query.TOMORROW)
