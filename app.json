@@ -1,0 +1,6 @@
+{
+  "name": "Habitist",
+  "description": "A webapp to integrate habit tracking in todoist",
+  "repository": "https://github.com/amitness/habitist",
+  "keywords": ["todoist", "flask", "ifttt"]
+}
