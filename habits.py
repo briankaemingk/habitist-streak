@@ -28,7 +28,7 @@ def main():
         logging.warn('Please set the API token in environment variable.')
         exit()
     user = todoist.login_with_api_token(API_TOKEN)
-    tasks = user.search_tasks(todoist.Query.TOMORROW)
+    tasks = user.search_tasks(todoist.Query.TODAY)
     for task in tasks:
         habit = is_habit(task.content)
         if habit:
