@@ -25,7 +25,7 @@ def update_streak(task, streak):
 
 def main():
     API_TOKEN = get_token()
-    today = datetime.today()
+    today = datetime.utcnow()
     yesterday = today - timedelta(1)
     
     if not API_TOKEN:
