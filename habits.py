@@ -30,7 +30,8 @@ def main():
     if not API_TOKEN:
         logging.warn('Please set the API token in environment variable.')
         exit()
-        
+     
+    user = todoist.login_with_api_token(API_TOKEN)
     #Check for Completion
     tasks = user.search_tasks(todoist.Query.TODAY)
     for task in tasks:
@@ -41,7 +42,6 @@ def main():
             
         
     #Check for Overdue
-    user = todoist.login_with_api_token(API_TOKEN)
     tasks = user.get_tasks()
     for task in tasks:
         
