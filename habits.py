@@ -39,7 +39,7 @@ def main():
         due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z').replace(tzinfo=None)
         complete = task.checked
         
-        print('Found Task:' task.content + ' Due Date: ' + due + ' Completed:' + complete)
+        print('Found Task:' + content + ' Due Date: ' + due + ' Completed:' + complete)
 
         
         habit = is_habit(task.content)
