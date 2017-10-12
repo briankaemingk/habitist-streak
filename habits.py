@@ -31,15 +31,17 @@ def main():
         logging.warn('Please set the API token in environment variable.')
         exit()
     user = todoist.login_with_api_token(API_TOKEN)
-    project = user.get_project('Habbits')
-    tasks = project.get_tasks()
+    
+    #Check for Overdue
+    project = user.get_project('Habbits')    
+    tasks = project.get_tasks()    
     for task in tasks:
         
         content = task.content
         due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z').replace(tzinfo=None)
         complete = task.checked
         
-        print('Found Task:' + content + ' Due Date: ' + due + ' Completed:' + complete)
+        print('Found Task:' + content + ' Due Date: ' + due.strftime("%B %d, %Y") + ' Completed:' + complete.strftime("%B %d, %Y"))
 
         
         habit = is_habit(task.content)
