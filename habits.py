@@ -24,6 +24,9 @@ def update_streak(task, streak):
 
 def main():
     API_TOKEN = get_token()
+    today = datetime.today()
+    yesterday = today - timedelta(1)
+    
     if not API_TOKEN:
         logging.warn('Please set the API token in environment variable.')
         exit()
@@ -36,6 +39,7 @@ def main():
         complete = task.checked
         print(content)
         print(due)
+        print(yesterday)
         print(complete)
         habit = is_habit(task.content)
         if habit:
