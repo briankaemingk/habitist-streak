@@ -35,7 +35,7 @@ def main():
             streak = int(habit.group(1)) + 1
             update_streak(task, streak)
 
-    tasks = user.search_tasks(todoist.Query.OVERDUE)
+    tasks = user.search_tasks(todoist.Query.ALL)
     print(tasks)
     for task in tasks:
         habit = is_habit(task.content)
