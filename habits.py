@@ -45,20 +45,18 @@ def main():
     tasks = user.get_tasks()
     for task in tasks:
         
-        content = task.content
-        print(content)
-        #due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z').replace(tzinfo=None)
-        #complete = task.checked
-        
-        #print(content)
-        #print(due)
-        #print(today)
-        #print(complete)
-        
-        habit = is_habit(task.content)      
-        #if habit and today > due and complete == 0:
-            #task.date_string = 'ev day starting tod'
-            #update_streak(task, 0)
+        content = task.content     
+        habit = is_habit(content)      
+        if habit:
+            due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z').replace(tzinfo=None)
+            complete = task.checked
+            print(content)
+            print(due)
+            print(today)print(complete)
+            
+            if today > due and complete == 0:
+                task.date_string = 'ev day starting tod'
+                update_streak(task, 0)
             
 if __name__ == '__main__':
     main()
