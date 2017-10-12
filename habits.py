@@ -41,7 +41,7 @@ def main():
         
         print(content)
         print(due)
-        type(due)
+        print(type(due))
         print(yesterday)
         print(complete)
         habit = is_habit(task.content)
