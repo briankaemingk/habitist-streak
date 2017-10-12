@@ -52,7 +52,8 @@ def main():
             complete = task.checked
             print(content)
             print(due)
-            print(today)print(complete)
+            print(today)
+            print(complete)
             
             if today > due and complete == 0:
                 task.date_string = 'ev day starting tod'
