@@ -28,8 +28,10 @@ def main():
         logging.warn('Please set the API token in environment variable.')
         exit()
     user = todoist.login_with_api_token(API_TOKEN)
-    tasks = user.search_tasks(todoist.Query.TODAY)
+    project = user.get_project('Habbits')
+    tasks =project.get_tasks()
     for task in tasks:
+        print(task.content)
         habit = is_habit(task.content)
         if habit:
             streak = int(habit.group(1)) + 1
@@ -37,7 +39,7 @@ def main():
 
     tasks = user.search_tasks(todoist.Query.ALL)
     for task in tasks:
-        print(task.content)
+        
         habit = is_habit(task.content)
         if habit:
             task.date_string = 'ev day starting tod'
