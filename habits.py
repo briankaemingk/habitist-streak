@@ -31,7 +31,10 @@ def main():
     project = user.get_project('Habbits')
     tasks =project.get_tasks()
     for task in tasks:
-        print(task.content)
+        content = task.content
+        due = task.due_date_utc
+        complete = task.checked
+        print(content + ' ' + due + ' ' + complete)
         habit = is_habit(task.content)
         if habit:
             streak = int(habit.group(1)) + 1
