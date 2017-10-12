@@ -26,7 +26,6 @@ def update_streak(task, streak):
 def main():
     API_TOKEN = get_token()
     today = datetime.utcnow()
-    yesterday = today - timedelta(1)
     
     if not API_TOKEN:
         logging.warn('Please set the API token in environment variable.')
@@ -35,14 +34,14 @@ def main():
     project = user.get_project('Habbits')
     tasks = project.get_tasks()
     for task in tasks:
+        
         content = task.content
         due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z')
         complete = task.checked
         
         print(content)
         print(due)
-        print(type(due))
-        print(yesterday)
+        print(today)
         print(complete)
         habit = is_habit(task.content)
         if habit:
