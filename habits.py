@@ -36,7 +36,7 @@ def main():
     for task in tasks:
         
         content = task.content
-        due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z')
+        due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z').replace(tzinfo=None)
         complete = task.checked
         
         print(content)
