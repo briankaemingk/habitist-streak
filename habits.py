@@ -36,8 +36,8 @@ def main():
             update_streak(task, streak)
 
     tasks = user.search_tasks(todoist.Query.ALL)
-    print(tasks)
     for task in tasks:
+        print(task)
         habit = is_habit(task.content)
         if habit:
             task.date_string = 'ev day starting tod'
