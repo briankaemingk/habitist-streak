@@ -36,11 +36,12 @@ def main():
     tasks = project.get_tasks()
     for task in tasks:
         content = task.content
-        due = datetime.utcfromtimestamp(task.due_date_utc)
+        due = task.due_date_utc
         complete = task.checked
         
         print(content)
         print(due)
+        type(due)
         print(yesterday)
         print(complete)
         habit = is_habit(task.content)
