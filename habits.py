@@ -43,14 +43,12 @@ def main():
         print(due)
         print(today)
         print(complete)
+        
         habit = is_habit(task.content)
         if habit and complete = 1:
             streak = int(habit.group(1)) + 1
             update_streak(task, streak)
         
-        if habit and today > due and complete = 0:
-            task.date_string = 'ev day starting tod'
-            update_streak(task, 0)
 
 if __name__ == '__main__':
     main()
