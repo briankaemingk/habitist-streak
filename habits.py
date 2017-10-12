@@ -31,6 +31,15 @@ def main():
         logging.warn('Please set the API token in environment variable.')
         exit()
         
+    #Check for Completion
+    tasks = user.search_tasks(todoist.Query.TODAY)
+    for task in tasks:
+        habit = is_habit(task.content)
+        if habit:
+            streak = int(habit.group(1)) + 1
+            update_streak(task, streak)
+            
+        
     #Check for Overdue
     user = todoist.login_with_api_token(API_TOKEN)
     tasks = user.get_tasks()
@@ -45,11 +54,7 @@ def main():
         print(today)
         print(complete)
         
-        habit = is_habit(task.content)
-        if habit and complete == 1:
-            streak = int(habit.group(1)) + 1
-            update_streak(task, streak)
-        
+        habit = is_habit(task.content)      
         if habit and today > due and complete == 0:
             task.date_string = 'ev day starting tod'
             update_streak(task, 0)
