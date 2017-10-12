@@ -35,6 +35,7 @@ def main():
     #Check for Completion
     tasks = user.search_tasks(todoist.Query.TODAY)
     for task in tasks:
+        print(task.content)
         habit = is_habit(task.content)
         if habit:
             streak = int(habit.group(1)) + 1
