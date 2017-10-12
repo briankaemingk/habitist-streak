@@ -51,10 +51,10 @@ def main():
         if habit:
             due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z').replace(tzinfo=None)
             complete = task.checked
-            print(content)
-            print(due)
-            print(today)
-            print(complete)
+            #print(content)
+            #print(due)
+            #print(today)
+            #print(complete)
             
             if today > due and complete == 0:
                 task.date_string = 'ev day starting tod'
