@@ -29,7 +29,7 @@ def main():
         exit()
     user = todoist.login_with_api_token(API_TOKEN)
     project = user.get_project('Habbits')
-    tasks = user.search_tasks(todoist.Query.OVERDUE)
+    tasks = project.add_filter('Overdue', todoist.Query.OVERDUE)
     for task in tasks:
         content = task.content
         due = task.due_date_utc
