@@ -36,8 +36,9 @@ def main():
     tasks = project.get_tasks()
     for task in tasks:
         content = task.content
-        due = task.due_date_utc
+        due = datetime.utcfromtimestamp(task.due_date_utc)
         complete = task.checked
+        
         print(content)
         print(due)
         print(yesterday)
