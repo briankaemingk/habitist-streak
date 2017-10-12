@@ -23,6 +23,7 @@ def update_streak(task, streak):
 
 
 def main():
+    print 'here'
     API_TOKEN = get_token()
     if not API_TOKEN:
         logging.warn('Please set the API token in environment variable.')
