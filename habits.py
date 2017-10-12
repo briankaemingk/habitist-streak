@@ -36,7 +36,7 @@ def main():
     tasks = project.get_tasks()
     for task in tasks:
         content = task.content
-        due = task.due_date_utc
+        due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z')
         complete = task.checked
         
         print(content)
