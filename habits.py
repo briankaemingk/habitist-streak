@@ -39,9 +39,9 @@ def main():
         
         habit = is_habit(task.content)
         if habit:
-        content = task.content
-        due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z').replace(tzinfo=None)
-        complete = task.checked
+            content = task.content
+            due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z').replace(tzinfo=None)
+            complete = task.checked
         
         print('Found Task:' + content)
         print(due)
