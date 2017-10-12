@@ -34,7 +34,7 @@ def main():
     
     #Check for Overdue
     project = user.get_project('Habbits')    
-    tasks = project.get_tasks()    
+    tasks = project.get_completed_tasks()
     for task in tasks:
         
         content = task.content
@@ -44,7 +44,6 @@ def main():
         print('Found Task:' + content)
         print(due)
         print(complete)
-
         
         habit = is_habit(task.content)
         if habit and complete == 1:
