@@ -34,7 +34,9 @@ def main():
         content = task.content
         due = task.due_date_utc
         complete = task.checked
-        print(content + ' ' + due + ' ' + complete)
+        print(content)
+        print(due)
+        print(complete)
         habit = is_habit(task.content)
         if habit:
             streak = int(habit.group(1)) + 1
