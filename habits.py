@@ -37,6 +37,8 @@ def main():
     tasks = project.get_completed_tasks()
     for task in tasks:
         
+        habit = is_habit(task.content)
+        if habit:
         content = task.content
         due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z').replace(tzinfo=None)
         complete = task.checked
@@ -45,7 +47,6 @@ def main():
         print(due)
         print(complete)
         
-        habit = is_habit(task.content)
         if habit and complete == 1:
             streak = int(habit.group(1)) + 1
             update_streak(task, streak)
