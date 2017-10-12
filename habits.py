@@ -37,7 +37,7 @@ def main():
 
     tasks = user.search_tasks(todoist.Query.ALL)
     for task in tasks:
-        print(task)
+        print(task.content)
         habit = is_habit(task.content)
         if habit:
             task.date_string = 'ev day starting tod'
