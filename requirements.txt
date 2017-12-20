@@ -1,4 +1,4 @@
-certifi==2017.7.27.1
+certifi==2017.11.5
 chardet==3.0.4
 click==6.7
 Flask==0.12.2
@@ -7,7 +7,7 @@ idna==2.6
 itsdangerous==0.24
 Jinja2==2.9.6
 MarkupSafe==1.0
-pytodoist==2.1.0
 requests==2.18.4
+todoist-python==7.0.18
 urllib3==1.22
 Werkzeug==0.12.2
