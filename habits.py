@@ -42,19 +42,14 @@ def main():
     api.sync()
     tasks = api.state['items']
     for task in tasks:
-        if task['due_date_utc']:
+        if task['due_date_utc'] and is_habit(task['content']):
             if is_today(task['due_date_utc']):
                 habit = is_habit(task['content'])
-                if habit:
-                    streak = int(habit.group(1)) + 1
-                    print(streak)
-                    print(task['content'])
-                    update_streak(task, streak)
+                streak = int(habit.group(1)) + 1
+                update_streak(task, streak)
             elif is_due(task['due_date_utc']):
-                habit = is_habit(task['content'])
-                if habit:
-                    update_streak(task, 0)
-                    task.update(date_string='ev day starting tod')
+                update_streak(task, 0)
+                task.update(date_string='ev day starting tod')
     api.commit()
 
 if __name__ == '__main__':
