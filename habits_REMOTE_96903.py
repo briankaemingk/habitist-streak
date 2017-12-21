@@ -35,8 +35,6 @@ def update_streak(item, streak):
 
 def main():
     API_TOKEN = get_token()
-    today = datetime.utcnow().replace(tzinfo=None)
-
     if not API_TOKEN:
         logging.warn('Please set the API token in environment variable.')
         exit()

@@ -2,7 +2,11 @@ import os
 import re
 import logging
 from datetime import datetime, timedelta
+<<<<<<< HEAD
+from pytodoist import todoist
+=======
 from todoist.api import TodoistAPI
+>>>>>>> upstream/master
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -36,10 +40,42 @@ def update_streak(item, streak):
 def main():
     API_TOKEN = get_token()
     today = datetime.utcnow().replace(tzinfo=None)
-
+    
     if not API_TOKEN:
         logging.warn('Please set the API token in environment variable.')
         exit()
+<<<<<<< HEAD
+    
+    user = todoist.login_with_api_token(API_TOKEN)
+    #Check for Completion
+    tasks = user.search_tasks(todoist.Query.TODAY)
+    for task in tasks:
+        print(task.content)
+        habit = is_habit(task.content)
+        if habit:
+            streak = int(habit.group(1)) + 1
+            update_streak(task, streak)
+            
+        
+    #Check for Overdue
+    tasks = user.get_tasks()
+    for task in tasks:
+        
+        content = task.content     
+        habit = is_habit(content)      
+        if habit:
+            due = datetime.strptime(task.due_date_utc, '%a %d %b %Y %H:%M:%S %z').replace(tzinfo=None)
+            complete = task.checked
+            #print(content)
+            #print(due)
+            #print(today)
+            #print(complete)
+            
+            if today > due and complete == 0:
+                task.date_string = 'ev day starting tod'
+                update_streak(task, 0)
+            
+=======
     api = TodoistAPI(API_TOKEN)
     api.sync()
     tasks = api.state['items']
@@ -54,5 +90,6 @@ def main():
                 task.update(date_string='ev day starting tod')
     api.commit()
 
+>>>>>>> upstream/master
 if __name__ == '__main__':
     main()
