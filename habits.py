@@ -48,7 +48,7 @@ def main():
     tasks = api.state['items']
     for task in tasks:
         if task['due_date_utc'] and is_habit(task['content']):
-            print(task['name'])
+            print(task['content'])
             print("match? ", is_today(task['due_date_utc']))
             if is_today(task['due_date_utc']):
                 habit = is_habit(task['content'])
