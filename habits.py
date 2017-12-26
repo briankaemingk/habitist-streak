@@ -46,8 +46,9 @@ def main():
     tasks = api.state['items']
     for task in tasks:
         if task['due_date_utc'] and is_habit(task['content']):
+            print(task)
             if is_today(task['due_date_utc']):
-                print(task)
+
                 habit = is_habit(task['content'])
                 streak = int(habit.group(1)) + 1
                 update_streak(task, streak)
