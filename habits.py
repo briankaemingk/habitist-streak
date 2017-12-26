@@ -21,6 +21,7 @@ def is_today(text):
     today = datetime.utcnow().strftime("%a %d %b")
     print("Today is: ", today)
     print("Comparing to: ", text)
+    print("Match? ", text[:10] == today)
     return text[:10] == today
 
 
