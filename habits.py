@@ -18,17 +18,19 @@ def is_habit(text):
 
 
 def is_today(text):
+    print(item)
     today = datetime.utcnow().strftime("%a %d %b")
     return text[:10] == today
 
 
 def is_due(text):
+    print(item)
     yesterday = (datetime.utcnow() - timedelta(1)).strftime("%a %d %b")
     return text[:10] == yesterday
 
 
 def update_streak(item, streak):
-    print(item)
+
     days = '[day {}]'.format(streak)
     text = re.sub(r'\[day\s(\d+)\]', days, item['content'])
     item.update(content=text)
