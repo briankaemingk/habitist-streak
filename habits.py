@@ -28,6 +28,7 @@ def is_due(text):
 
 
 def update_streak(item, streak):
+    print(item)
     days = '[day {}]'.format(streak)
     text = re.sub(r'\[day\s(\d+)\]', days, item['content'])
     item.update(content=text)
@@ -44,7 +45,6 @@ def main():
     api.sync()
     tasks = api.state['items']
     for task in tasks:
-        print(task)
         if task['due_date_utc'] and is_habit(task['content']):
             if is_today(task['due_date_utc']):
                 habit = is_habit(task['content'])
