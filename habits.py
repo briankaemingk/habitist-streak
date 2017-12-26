@@ -18,7 +18,7 @@ def is_habit(text):
 
 
 def is_today(text):
-    today = datetime.utcnow().strftime("%a %d %b %y")
+    today = datetime.utcnow().strftime("%a %d %b")
     print("Today is: ", today)
     print("Comparing to: ", text[:10])
     return text[:10] == today
@@ -26,6 +26,8 @@ def is_today(text):
 
 def is_due(text):
     yesterday = (datetime.utcnow() - timedelta(1)).strftime("%a %d %b")
+    print("Yesterday is: ", yesterday)
+    print("Comparing to: ", text[:10])
     return text[:10] == yesterday
 
 
