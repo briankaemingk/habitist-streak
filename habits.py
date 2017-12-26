@@ -20,7 +20,7 @@ def is_habit(text):
 def is_today(text):
     today = datetime.utcnow().strftime("%a %d %b %y")
     print("Today is: ", today)
-    print("Comparing to: ", text)
+    print("Comparing to: ", text[:10])
     return text[:10] == today
 
 
