@@ -18,13 +18,13 @@ def is_habit(text):
 
 
 def is_today(text):
-    print(item)
+    print(text)
     today = datetime.utcnow().strftime("%a %d %b")
     return text[:10] == today
 
 
 def is_due(text):
-    print(item)
+    print(text)
     yesterday = (datetime.utcnow() - timedelta(1)).strftime("%a %d %b")
     return text[:10] == yesterday
 
