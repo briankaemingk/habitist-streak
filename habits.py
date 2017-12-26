@@ -19,6 +19,8 @@ def is_habit(text):
 
 def is_today(text):
     today = datetime.utcnow().strftime("%a %d %b")
+    print("Today is: ", today)
+    print("Comparing to: ", text)
     return text[:10] == today
 
 
@@ -46,7 +48,6 @@ def main():
     tasks = api.state['items']
     for task in tasks:
         if task['due_date_utc'] and is_habit(task['content']):
-            print(task)
             if is_today(task['due_date_utc']):
 
                 habit = is_habit(task['content'])
