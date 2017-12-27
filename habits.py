@@ -18,13 +18,14 @@ def is_habit(text):
 
 
 def is_today(text):
-    today = datetime.utcnow().strftime("%a %d %b")
-    print("Today: ",today)
+    #today = datetime.utcnow().strftime("%a %d %b")
+    today = (datetime.utcnow() + timedelta(1)).strftime("%a %d %b")
     return text[:10] == today
 
 
 def is_due(text):
-    yesterday = (datetime.utcnow() - timedelta(1)).strftime("%a %d %b")
+    #yesterday = (datetime.utcnow() - timedelta(1)).strftime("%a %d %b")
+    yesterday = datetime.utcnow().strftime("%a %d %b")
     return text[:10] == yesterday
 
 
@@ -47,7 +48,6 @@ def main():
     tasks = api.state['items']
     for task in tasks:
         if task['due_date_utc'] and is_habit(task['content']):
-            print("Due Date: ",task['due_date_utc'])
             if is_today(task['due_date_utc']):
                 habit = is_habit(task['content'])
                 streak = int(habit.group(1)) + 1
