@@ -18,12 +18,14 @@ def is_habit(text):
 
 
 def is_today(text):
+    # Previous version
     #today = datetime.utcnow().strftime("%a %d %b")
     today = (datetime.utcnow() + timedelta(1)).strftime("%a %d %b")
     return text[:10] == today
 
 
 def is_due(text):
+    # Pervious version
     #yesterday = (datetime.utcnow() - timedelta(1)).strftime("%a %d %b")
     yesterday = datetime.utcnow().strftime("%a %d %b")
     return text[:10] == yesterday
@@ -39,7 +41,10 @@ def update_streak(item, streak):
 def main():
     API_TOKEN = get_token()
     today = datetime.utcnow().replace(tzinfo=None)
+<<<<<<< HEAD
 
+=======
+>>>>>>> b79b84e10e7c7a2a2bdae854a7923636f66e7332
     if not API_TOKEN:
         logging.warn('Please set the API token in environment variable.')
         exit()
