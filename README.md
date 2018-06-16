@@ -1,24 +1,22 @@
-# habitist [![Code Climate](https://codeclimate.com/github/amitness/habitist/badges/gpa.svg)](https://codeclimate.com/github/amitness/habitist)
-An automation to enable habit tracking in todoist. 
+# habitist (streak) 
+An automation to enable habit tracking in todoist. Modified version of [habitist](https://github.com/amitness/habitist).
 
 It integrates Seinfield's "[Don't Break the Chain](https://lifehacker.com/281626/jerry-seinfelds-productivity-secret)" method into [todoist](http://todoist.com/). Once it's setup, you can forget about it and it works seamlessly.
 
 ## Usage
 
-![Habitist Screenshot](https://i.imgur.com/q4h2QGv.png)
+1. You add habits you want to form as task on todoist with a recurring schedule (could be any recurrance pattern (`every day`, `every week` or `every year`, for example)
 
-1. You add habits you want to form as task on todoist with schedule `every day`
+2. Add `[streak 0]` to the task
 
-2. Add `[day 0]` to the task
+3. When you complete the task, the [streak 0] will become [streak 1]
 
-3. When you complete the task, the [day 0] will become [day 1]
-
-4. If you fail to complete the task and it becomes overdue, the script will schedule it to today and reset [day X] to [day 0].
+TODO: 4. If you fail to complete the task and it becomes overdue, the script will schedule it to today and reset [streak X] to [streak 0].
 
 ## Installation
 1. Fork and clone the repo
     ```
-    git clone https://github.com/yourgithubusername/habitist
+    git clone https://github.com/yourgithubusername/habitist-streak
     ```
 2. Create a heroku app.
     ```
@@ -35,7 +33,7 @@ It integrates Seinfield's "[Don't Break the Chain](https://lifehacker.com/281626
     ```
  
 5. On [IFTTT](http://ifttt.com/), [create](https://ifttt.com/create) a new applet. 
-    - On THIS, select datetime > 'Every Day At' > 12 AM
+    - On THIS, select todoist > 'New completed task' > Any Project 
     - On THAT, select Webhooks > `Make a web request`
     - Set URL to your heroku app URL
     - Set METHOD to GET
