@@ -19,19 +19,16 @@ def get_token():
 
 
 def is_habit(text):
-    return re.search(r'\[day\s(\d+)\]', text)
+    return re.search(r'\[streak\s(\d+)\]', text)
+    #return re.search(r'\[day\s(\d+)\]', text)
 
 
 def is_today(text):
-    # Previous version
-    #today = datetime.utcnow().strftime("%a %d %b")
     today = (datetime.utcnow() + timedelta(1)).strftime("%a %d %b")
     return text[:10] == today
 
 
 def is_due(text):
-    # Pervious version
-    #yesterday = (datetime.utcnow() - timedelta(1)).strftime("%a %d %b")
     yesterday = datetime.utcnow().strftime("%a %d %b")
     return text[:10] == yesterday
 
@@ -43,9 +40,14 @@ def update_streak(item, streak):
     item.update(content=text)
 
 
-def main():
+def main(task_url):
     API_TOKEN = get_token()
     today = datetime.utcnow().replace(tzinfo=None)
+
+    #TODO URL is in format: https://todoist.com/showTask?id=2690174754
+    #task_match = re.search('https:\/\/todoist.com\/showTask\?id=([0-9]+)', task_url)
+    #task_id = task_match.group(1)
+    #print (task_id)
 
     if not API_TOKEN:
         logging.warn('Please set the API token in environment variable.')
@@ -55,7 +57,9 @@ def main():
     tasks = api.state['items']
     for task in tasks:
         if task['due_date_utc'] and is_habit(task['content']):
-            if is_today(task['due_date_utc']):
+            #print(task)
+            if not is_today(task['due_date_utc']):
+                print(task)
                 habit = is_habit(task['content'])
                 streak = int(habit.group(1)) + 1
                 update_streak(task, streak)
