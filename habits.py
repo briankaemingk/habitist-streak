@@ -5,64 +5,48 @@ env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 import os
 import re
-import logging
-from datetime import datetime, timedelta
 from todoist.api import TodoistAPI
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-
 def get_token():
     token = os.getenv('TODOIST_APIKEY')
+    API_TOKEN = get_token()
+    if not API_TOKEN:
+        logging.warn('Please set the API token in environment variable.')
+        exit()
     return token
-
 
 def is_habit(text):
     return re.search(r'\[streak\s(\d+)\]', text)
-    #return re.search(r'\[day\s(\d+)\]', text)
-
-
-def is_today(text):
-    today = (datetime.utcnow() + timedelta(1)).strftime("%a %d %b")
-    return text[:10] == today
-
-
-def is_due(text):
-    yesterday = datetime.utcnow().strftime("%a %d %b")
-    return text[:10] == yesterday
-
 
 def update_streak(item, streak):
-
     streak_num = '[streak {}]'.format(streak)
     text = re.sub(r'\[streak\s(\d+)\]', streak_num, item['content'])
     item.update(content=text)
 
-
-def main(task_url):
-    API_TOKEN = get_token()
-    today = datetime.utcnow().replace(tzinfo=None)
-
-    if not API_TOKEN:
-        logging.warn('Please set the API token in environment variable.')
-        exit()
-    api = TodoistAPI(API_TOKEN)
-    api.sync()
+def increment_streak(api, task_url):
     tasks = api.state['items']
-
     #URL is in format: https://todoist.com/showTask?id=2690174754
     task_match = re.search('https:\/\/todoist.com\/showTask\?id=([0-9]+)', task_url)
     if(task_match) :
         task_id = task_match.group(1)
         for task in tasks:
             if int(task['id']) == int(task_id) and is_habit(task['content']):
-
                 habit = is_habit(task['content'])
                 streak = int(habit.group(1)) + 1
                 update_streak(task, streak)
-
     api.commit()
+
+def reset_streak(api):
+    api.commit()
+
+def main(task_url):
+    api = TodoistAPI(get_token())
+    api.sync()
+    return api
+
 
 if __name__ == '__main__':
     main()

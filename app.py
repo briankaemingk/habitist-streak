@@ -7,13 +7,15 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     task_url = str(request.data)
-    habits.main(task_url)
-    return 'Completed.'
+    api = habits.main()
+    habits.increment_streak(api, task_url)
+    return 'Completed increment streak.'
 
-@app.route('/daily_check')
-def daily_check():
-    return 'Hello, World'
-
+@app.route('/reset_streak')
+def reset_streak():
+    api = habits.main()
+    habits.reset_streak(api)
+    return 'Completed reset streak.'
 
 if __name__ == '__main__':
     app.run()
