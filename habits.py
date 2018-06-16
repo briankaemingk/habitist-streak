@@ -41,10 +41,6 @@ def update_streak(item, streak):
 
 
 def main(task_url):
-    #URL is in format: https://todoist.com/showTask?id=2690174754
-    task_match = re.search('https:\/\/todoist.com\/showTask\?id=([0-9]+)', task_url)
-    task_id = task_match.group(1)
-
     API_TOKEN = get_token()
     today = datetime.utcnow().replace(tzinfo=None)
 
@@ -54,12 +50,17 @@ def main(task_url):
     api = TodoistAPI(API_TOKEN)
     api.sync()
     tasks = api.state['items']
-    for task in tasks:
-        if int(task['id']) == int(task_id) and is_habit(task['content']):
 
-            habit = is_habit(task['content'])
-            streak = int(habit.group(1)) + 1
-            update_streak(task, streak)
+    #URL is in format: https://todoist.com/showTask?id=2690174754
+    task_match = re.search('https:\/\/todoist.com\/showTask\?id=([0-9]+)', task_url)
+    if(task_match) :
+        task_id = task_match.group(1)
+        for task in tasks:
+            if int(task['id']) == int(task_id) and is_habit(task['content']):
+
+                habit = is_habit(task['content'])
+                streak = int(habit.group(1)) + 1
+                update_streak(task, streak)
 
     api.commit()
 
