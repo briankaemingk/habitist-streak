@@ -1,5 +1,7 @@
 # habitist (streak)  [![Code Climate](https://codeclimate.com/github/briankaemingk/habitist-streak/badges/gpa.svg)](https://codeclimate.com/github/briankaemingk/habitist-streak)
-An automation to enable habit tracking in todoist. Modified version of [habitist](https://github.com/amitness/habitist).
+An automation to enable habit tracking in todoist. 
+
+This is a "sister" app/modified version of [habitist](https://github.com/amitness/habitist). While habitist focuses on daily habits, this web services allows you to apply the don't break the chain concept to streaks of any time-frames (daily, weekly, monthly, etc).
 
 It integrates Seinfield's "[Don't Break the Chain](https://lifehacker.com/281626/jerry-seinfelds-productivity-secret)" method into [todoist](http://todoist.com/). Once it's setup, you can forget about it and it works seamlessly.
 
