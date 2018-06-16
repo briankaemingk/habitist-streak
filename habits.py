@@ -56,9 +56,8 @@ def main(task_url):
     api.sync()
     tasks = api.state['items']
     for task in tasks:
-        print(task['content'], ' ', task['id'])
         if task['id'] == task_id and is_habit(task['content']):
-            print(task)
+            print(task['content'], ' ', task['id'])
             if not is_today(task['due_date_utc']):
                 print(task)
                 habit = is_habit(task['content'])
