@@ -41,13 +41,12 @@ def update_streak(item, streak):
 
 
 def main(task_url):
-    API_TOKEN = get_token()
-    today = datetime.utcnow().replace(tzinfo=None)
-
-    #TODO URL is in format: https://todoist.com/showTask?id=2690174754
+    #URL is in format: https://todoist.com/showTask?id=2690174754
     task_match = re.search('https:\/\/todoist.com\/showTask\?id=([0-9]+)', task_url)
     task_id = task_match.group(1)
-    print (task_id)
+
+    API_TOKEN = get_token()
+    today = datetime.utcnow().replace(tzinfo=None)
 
     if not API_TOKEN:
         logging.warn('Please set the API token in environment variable.')
@@ -56,8 +55,8 @@ def main(task_url):
     api.sync()
     tasks = api.state['items']
     for task in tasks:
-        if task['due_date_utc'] and is_habit(task['content']):
-            #print(task)
+        if task['id'] == task_id and is_habit(task['content']):
+            print(task)
             if not is_today(task['due_date_utc']):
                 print(task)
                 habit = is_habit(task['content'])
