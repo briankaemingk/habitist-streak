@@ -44,6 +44,7 @@ def main(task_url):
     #URL is in format: https://todoist.com/showTask?id=2690174754
     task_match = re.search('https:\/\/todoist.com\/showTask\?id=([0-9]+)', task_url)
     task_id = task_match.group(1)
+    print('taskID is: ', task_id)
 
     API_TOKEN = get_token()
     today = datetime.utcnow().replace(tzinfo=None)
@@ -55,7 +56,8 @@ def main(task_url):
     api.sync()
     tasks = api.state['items']
     for task in tasks:
-        if str(task['id']) == task_id and is_habit(task['content']):
+        print(task['content'], ' ', task['id'])
+        if task['id'] == task_id and is_habit(task['content']):
             print(task)
             if not is_today(task['due_date_utc']):
                 print(task)
