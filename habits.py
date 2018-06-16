@@ -45,8 +45,8 @@ def main(task_url):
     today = datetime.utcnow().replace(tzinfo=None)
 
     #TODO URL is in format: https://todoist.com/showTask?id=2690174754
-    #task_match = re.search('https:\/\/todoist.com\/showTask\?id=([0-9]+)', task_url)
-    #task_id = task_match.group(1)
+    task_match = re.search('https:\/\/todoist.com\/showTask\?id=([0-9]+)', task_url)
+    task_id = task_match.group(0)
     #print (task_id)
 
     if not API_TOKEN:
