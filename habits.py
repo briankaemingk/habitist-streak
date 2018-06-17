@@ -26,11 +26,10 @@ def update_streak(item, streak):
 def parse_task_id(task_url):
     #URL is in format: https://todoist.com/showTask?id=2690174754
     task_match = re.search('https:\/\/todoist.com\/showTask\?id=([0-9]+)', task_url)
-    if(task_match) : task_id = task_match.group(1)
+    task_id = task_match.group(1)
     return task_id
 
 def increment_streak(api, task_url):
-    tasks = api.state['items']
     task_id = parse_task_id(task_url)
     if(task_id) :
         for task in tasks:
@@ -41,6 +40,7 @@ def increment_streak(api, task_url):
     api.commit()
 
 def reset_streak(api):
+
     api.commit()
 
 def main():
