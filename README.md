@@ -35,6 +35,16 @@ TODO: 4. If you fail to complete the task and it becomes overdue, the script wil
     ```
  
 5. On [IFTTT](http://ifttt.com/), [create](https://ifttt.com/create) a new applet. 
+    - On THIS, select datetime > 'Every Day At' > 12 AM
+    - On THAT, select Webhooks > Make a web request
+    - Set URL to your heroku app URL with the directory`/reset_streak`:
+    ```
+    http://your-habitist-streak-app-name.herokuapp.com/reset_streak
+    ```
+    - Set METHOD to GET
+    - Hit Create Action
+
+6. On [IFTTT](http://ifttt.com/), [create](https://ifttt.com/create) a new applet.
     - On THIS, select todoist > 'New completed task' > Any Project 
     - On THAT, select Webhooks > `Make a web request`
     - Set URL to your heroku app URL
