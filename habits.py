@@ -13,10 +13,6 @@ logger.setLevel(logging.INFO)
 
 def get_token():
     token = os.getenv('TODOIST_APIKEY')
-    API_TOKEN = get_token()
-    if not API_TOKEN:
-        logging.warn('Please set the API token in environment variable.')
-        exit()
     return token
 
 def is_habit(text):
@@ -44,7 +40,11 @@ def reset_streak(api):
     api.commit()
 
 def main():
-    api = TodoistAPI(get_token())
+    API_TOKEN = get_token()
+    if not API_TOKEN:
+        logging.warn('Please set the API token in environment variable.')
+        exit()
+    api = TodoistAPI(API_TOKEN)
     api.sync()
     return api
 

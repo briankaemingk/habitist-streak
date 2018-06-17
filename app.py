@@ -3,12 +3,11 @@ import habits
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
-    task_url = str(request.data)
     api = habits.main()
-    habits.increment_streak(api, task_url)
+    task_url = str(request.data)
+    #habits.increment_streak(api, task_url)
     return 'Completed increment streak.'
 
 @app.route('/reset_streak')
