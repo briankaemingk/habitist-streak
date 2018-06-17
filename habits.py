@@ -43,7 +43,7 @@ def increment_streak(api, task_url):
 def reset_streak(api):
     api.commit()
 
-def main(task_url):
+def main():
     api = TodoistAPI(get_token())
     api.sync()
     return api
