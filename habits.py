@@ -31,6 +31,7 @@ def parse_task_id(task_url):
 
 def increment_streak(api, task_url):
     task_id = parse_task_id(task_url)
+    tasks = api.state['items']
     if(task_id) :
         for task in tasks:
             if int(task['id']) == int(task_id) and is_habit(task['content']):
@@ -40,7 +41,7 @@ def increment_streak(api, task_url):
     api.commit()
 
 def reset_streak(api):
-
+    tasks = api.state['items']
     api.commit()
 
 def main():
