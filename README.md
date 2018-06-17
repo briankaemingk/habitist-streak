@@ -39,7 +39,7 @@ TODO: 4. If you fail to complete the task and it becomes overdue, the script wil
     - On THAT, select Webhooks > Make a web request
     - Set URL to your heroku app URL with the directory`/reset_streak`:
     ```
-    http://your-habitist-streak-app-name.herokuapp.com/reset_streak
+    https://your-habitist-streak-app-name.herokuapp.com/reset_streak
     ```
     - Set METHOD to GET
     - Hit Create Action
