@@ -23,12 +23,16 @@ def update_streak(item, streak):
     text = re.sub(r'\[streak\s(\d+)\]', streak_num, item['content'])
     item.update(content=text)
 
-def increment_streak(api, task_url):
-    tasks = api.state['items']
+def parse_task_id(task_url):
     #URL is in format: https://todoist.com/showTask?id=2690174754
     task_match = re.search('https:\/\/todoist.com\/showTask\?id=([0-9]+)', task_url)
-    if(task_match) :
-        task_id = task_match.group(1)
+    if(task_match) : task_id = task_match.group(1)
+    return task_id
+
+def increment_streak(api, task_url):
+    tasks = api.state['items']
+    task_id = parse_task_id(task_url)
+    if(task_id) :
         for task in tasks:
             if int(task['id']) == int(task_id) and is_habit(task['content']):
                 habit = is_habit(task['content'])
