@@ -3,7 +3,7 @@ An automation to enable habit tracking in todoist.
 
 It integrates Seinfield's "[Don't Break the Chain](https://lifehacker.com/281626/jerry-seinfelds-productivity-secret)" method into [todoist](http://todoist.com/). Once it's setup, you can forget about it and it works seamlessly.
 
-This is a different flavor of the originally implemented [habitist](https://github.com/amitness/habitist). While habitist is focused on daily habits, habitist (streak) can be applied to streaks of any recurrence time-frames (daily, weekly, monthly, etc).
+This is a different flavor of the originally implemented [habitist](https://github.com/amitness/habitist). While habitist is focused on daily habits, habitist (streak) can be applied to habits of any recurrence time-frames (daily, weekly, monthly, etc).
 
 ## Usage
 
