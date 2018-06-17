@@ -3,6 +3,7 @@ load_dotenv()
 from pathlib import Path  # python3 only
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
+from datetime import datetime, timedelta
 import os
 import re
 import logging
@@ -29,19 +30,26 @@ def parse_task_id(task_url):
     task_id = task_match.group(1)
     return task_id
 
+def is_due(text):
+    yesterday = datetime.utcnow().strftime("%a %d %b")
+    return text[:10] == yesterday
+
 def increment_streak(api, task_url):
-    task_id = parse_task_id(task_url)
     tasks = api.state['items']
-    if(task_id) :
-        for task in tasks:
-            if int(task['id']) == int(task_id) and is_habit(task['content']):
-                habit = is_habit(task['content'])
-                streak = int(habit.group(1)) + 1
-                update_streak(task, streak)
+    for task in tasks:
+        if int(task['id']) == int(task_id) and is_habit(task['content']):
+            habit = is_habit(task['content'])
+            streak = int(habit.group(1)) + 1
+            update_streak(task, streak)
     api.commit()
 
 def reset_streak(api):
     tasks = api.state['items']
+    for task in tasks:
+        if task['due_date_utc'] and is_habit(task['content']) and is_due(task['due_date_utc']):
+            update_streak(task, 0)
+            date_string = task['date_string']
+            task.update(date_string= date_string + ' starting tod')
     api.commit()
 
 def main():
