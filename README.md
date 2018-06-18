@@ -49,6 +49,8 @@ TODO: 4. If you fail to complete the task and it becomes overdue, the script wil
     - On THAT, select Webhooks > `Make a web request`
     - Set URL to your heroku app URL
     - Set METHOD to GET
+    - Set CONTENT TYPE to text/plain
+    - Set BODY to the ingredient `LinkToTask`
     - Hit Create Action
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
