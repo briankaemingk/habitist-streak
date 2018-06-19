@@ -13,7 +13,7 @@ This is a different flavor of the originally implemented [habitist](https://gith
 
 3. When you complete the task, the `[streak 0]` will become `[streak 1]`
 
-TODO: 4. If you fail to complete the task and it becomes overdue, the script will schedule it to today and reset `[streak X]` to `[streak 0]`.
+4. If you fail to complete the task and it becomes overdue, the script will schedule it to today and reset `[streak X]` to `[streak 0]`.
 
 ## Installation
 1. Fork and clone the repo
