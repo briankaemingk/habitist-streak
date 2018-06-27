@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    print('here')
     api = habits.main()
     task_url = str(request.data)
     habits.increment_streak(api, task_url)
