@@ -37,7 +37,7 @@ def is_due(text):
 def increment_streak(api, task_url):
     tasks = api.state['items']
     for task in tasks:
-        if int(task['id']) == int(task_id) and is_habit(task['content']):
+        if int(task['id']) == int(parse_task_id(task_url)) and is_habit(task['content']):
             habit = is_habit(task['content'])
             streak = int(habit.group(1)) + 1
             update_streak(task, streak)
