@@ -1,6 +1,6 @@
 {
-  "name": "Habitist",
+  "name": "habitist-streak",
   "description": "A webapp to integrate habit tracking in todoist",
-  "repository": "https://github.com/amitness/habitist",
+  "repository": "https://github.com/briankaemingk/habitist-streak",
   "keywords": ["todoist", "flask", "ifttt"]
 }
